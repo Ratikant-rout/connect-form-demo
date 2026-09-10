@@ -332,7 +332,7 @@ useEffect(() => {
   
   const fetchRecords = async () => {
       try {
-          const res = await fetch(`http://localhost:8003/api/v1/proxy?object=${selectedObject}`);
+          const res = await fetch(`https://mcp-provisioning-tool.onrender.com/api/v1/proxy?object=${selectedObject}`);
           const data = await res.json();
           if (data.records) {
               setAllRecords(data.records);
@@ -357,7 +357,7 @@ const handleSubmit = async () => {
   }
 
   setLoading(true);
-  let url = "http://localhost:8003/api/v1/proxy";
+  let url = "https://mcp-provisioning-tool.onrender.com/api/v1/proxy";
   let requestBody = { object: selectedObject };
 
   // Logic for CREATE
