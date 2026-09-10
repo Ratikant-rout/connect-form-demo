@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import deltaLogo from './assets/delta_faucet_company_logo.jpg';
 
 const SapIntegration = () => {
 const [formData, setFormData] = useState({
