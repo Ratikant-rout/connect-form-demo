@@ -40,7 +40,7 @@ const handleSubmit = async (e) => {
 
     try {
         setStatus('Provisioning SAP credentials...');
-        const response = await fetch('http://localhost:8003/api/provision', {
+        const response = await fetch('https://mcp-provisioning-tool.onrender.com/api/provision', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -73,7 +73,7 @@ if (sapEndpoint.trim() !== REQUIRED_KEY) {
 }
 
 try {
-    const response = await fetch('http://localhost:8003/api/fetch-sap-data', {
+    const response = await fetch('https://mcp-provisioning-tool.onrender.com/api/fetch-sap-data', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ endpoint: sapEndpoint.trim() })
