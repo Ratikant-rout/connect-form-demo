@@ -30,6 +30,21 @@
   }
 }
 
+.sap-data-table,
+.sap-data-table th,
+.sap-data-table td {
+  color: #ffffff !important;
+}
+
+.sap-data-table tbody tr {
+  background-color: #1E293B !important;
+}
+
+.sap-data-table thead tr {
+  background-color: #4f1f6b !important;
+}
+
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
@@ -108,4 +123,19 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+.sap-data-table th,
+.sap-data-table td {
+    color: #FFFFFF !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    opacity: 1 !important;
+}
+
+.sap-data-table tbody tr {
+    background-color: #1E293B !important;
+}
+
+.sap-data-table thead tr {
+    background-color: #4f1f6b !important;
 }
