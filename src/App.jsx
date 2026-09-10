@@ -255,6 +255,13 @@ import { useState } from "react";
 import { CheckCircle2, XCircle } from "lucide-react";
 import "./App.css";
 import ProviderDashboard from "./ProviderDashboard";
+import ApiExplorer from "./ApiExplorer";
+// In src/App.jsx
+import SapIntegration from './SapIntegration';
+import Header from "./components/Header";
+import Navigation from "./components/Navigation";
+import Hero from "./components/Hero";
+
 
 const RENDER_URL = "http://localhost:8003/api/provision";
 
@@ -375,6 +382,7 @@ function ConnectForm() {
         <div style={{ marginBottom: 32 }}>
           <h1 style={{ fontSize: 28, fontWeight: 700, margin: 0 }}>Connect a new system</h1>
         </div>
+
 
         {status !== "success" && (
           <form onSubmit={handleSubmit} style={{ background: "#131D27", border: "1px solid #1F2B38", borderRadius: 14, padding: 26, display: "flex", flexDirection: "column", gap: 20 }}>
@@ -499,60 +507,53 @@ function ConnectForm() {
   );
 }
 
+
+
 // ==========================================
-// MAIN APP ENTRY POINT WITH TAB NAVIGATION
+// MAIN APP ENTRY POINT
 // ==========================================
+
 export default function App() {
   const [activeTab, setActiveTab] = useState("connect");
 
   return (
-    <div style={{ backgroundColor: "#0F1720", minHeight: "100vh", color: "#fff" }}>
-      {/* Navigation Header */}
-      <nav
-        style={{
-          display: "flex",
-          gap: "16px",
-          padding: "16px 32px",
-          borderBottom: "1px solid #1E293B",
-          backgroundColor: "#0B1118",
-        }}
-      >
-        <button
-          onClick={() => setActiveTab("connect")}
-          style={{
-            padding: "8px 16px",
-            backgroundColor: activeTab === "connect" ? "#2563eb" : "transparent",
-            color: "#fff",
-            border: activeTab === "connect" ? "none" : "1px solid #334155",
-            borderRadius: "6px",
-            fontWeight: 600,
-            cursor: "pointer",
-          }}
-        >
-          🔌 Consumer Connection
-        </button>
+    <div className="portal-app">
 
-        <button
-          onClick={() => setActiveTab("provider")}
-          style={{
-            padding: "8px 16px",
-            backgroundColor: activeTab === "provider" ? "#2563eb" : "transparent",
-            color: "#fff",
-            border: activeTab === "provider" ? "none" : "1px solid #334155",
-            borderRadius: "6px",
-            fontWeight: 600,
-            cursor: "pointer",
-          }}
-        >
-          📊 Provider Dashboard
-        </button>
-      </nav>
+      {/* Generic enterprise header */}
+      <Header />
 
-      {/* Main View Area */}
-      <main>
-        {activeTab === "connect" && <ConnectForm />}
-        {activeTab === "provider" && <ProviderDashboard />}
+      {/* Four application tabs */}
+ <Navigation
+  activeTab={activeTab}
+  onTabChange={setActiveTab}
+/>
+
+      {/* Main hero / website introduction */}
+      <Hero />
+
+      {/* Application content */}
+      <main className="portal-content">
+        <div className="portal-content-inner">
+
+          {activeTab === "connect" && (
+            <ConnectForm />
+          )}
+
+          {activeTab === "provider" && (
+            <ProviderDashboard />
+          )}
+
+          {activeTab === "explorer" && (
+            <ApiExplorer />
+          )}
+
+          {activeTab === "sap" && (
+            <SapIntegration />
+          )}
+
+        </div>
       </main>
+
     </div>
   );
 }
