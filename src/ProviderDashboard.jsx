@@ -25,7 +25,7 @@ export default function ProviderDashboard() {
   const handleToggleCredentials = async () => {
   if (!showCredentials) {
     try {
-      const response = await fetch("http://localhost:8003/api/provider-credentials");
+      const response = await fetch("https://mcp-provisioning-tool.onrender.com/api/provider-credentials");
       const result = await response.json();
       if (result.success) {
         setCredentials(result.data);
@@ -39,7 +39,7 @@ export default function ProviderDashboard() {
 
   const fetchMetrics = async () => {
     try {
-      const res = await fetch("http://localhost:8003/api/provider-metrics");
+      const res = await fetch("https://mcp-provisioning-tool.onrender.com/api/provider-metrics");
       const json = await res.json();
       if (json.success) {
         setMetrics(json.data);
