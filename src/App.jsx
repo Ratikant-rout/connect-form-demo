@@ -263,7 +263,7 @@ import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 
 
-const RENDER_URL = "http://localhost:8003/api/provision";
+const RENDER_URL = "https://mcp-provisioning-tool.onrender.com/api/provision";
 
 const AUTH_OPTIONS = [
   { value: "NoAuthentication", label: "No authentication" },
@@ -338,7 +338,7 @@ function ConnectForm() {
     setAccountsError(null);
 
     try {
-      const response = await fetch("http://localhost:8003/api/fetch-accounts", {
+      const response = await fetch("https://mcp-provisioning-tool.onrender.com/api/fetch-accounts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
